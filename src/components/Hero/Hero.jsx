@@ -1,8 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import styles from "../../styles/Home.module.css";
-
-import BACKGROUND from "../../images/computer.png";
+import styles from '../../styles/Home.module.css';
 
 const Hero = () => {
   return (
@@ -12,7 +10,7 @@ const Hero = () => {
         <div className={styles.text}>
           <div className={styles.subtitle}>Some subtitle</div>
           <h1 className={styles.head}>
-            Some information or a call to purchase{" "}
+            Some information or a call to purchase{' '}
           </h1>
           <button className={styles.button}>Watch list</button>
         </div>
