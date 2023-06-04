@@ -41,23 +41,23 @@
 
 // export default moviesSlice.reducer;
 
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { BASE_URL } from "../../utils/constants";
+// import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+// import { BASE_URL } from "../../utils/constants";
 
-export const apiMovieSlice = createApi({
-  reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
-  tagTypes: ["Movie"],
-  endpoints: (builder) => ({
-    getMovie: builder.query({
-      query: ({ id }) => `/movie/${id}`,
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDMxOTU5ZmE2MjY1ZjYzMmFmNDYzNWQ5YjQxYThiMiIsInN1YiI6IjY0Nzg4ZWUzMDc2Y2U4MDEwNzliOGI4OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.pmp3ofXekmAIvbSLpvZgFO2iFpU5oouPhK92tJLJ4Nw",
-      },
-      providesTags: ["Movie"],
-    }),
-  }),
-});
-console.log(apiMovieSlice);
-export const { useGetMovieQuery } = apiMovieSlice;
+// export const apiMovieSlice = createApi({
+//   reducerPath: "api",
+//   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+//   tagTypes: ["Movie"],
+//   endpoints: (builder) => ({
+//     getMovie: builder.query({
+//       query: ({ id }) => `/movie/${id}`,
+//       headers: {
+//         Authorization:
+//           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDMxOTU5ZmE2MjY1ZjYzMmFmNDYzNWQ5YjQxYThiMiIsInN1YiI6IjY0Nzg4ZWUzMDc2Y2U4MDEwNzliOGI4OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.pmp3ofXekmAIvbSLpvZgFO2iFpU5oouPhK92tJLJ4Nw",
+//       },
+//       providesTags: ["Movie"],
+//     }),
+//   }),
+// });
+// console.log(apiMovieSlice);
+// export const { useGetMovieQuery } = apiMovieSlice;
