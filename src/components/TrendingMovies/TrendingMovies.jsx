@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import styles from "../../styles/Products.module.css";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getTrendingMovies } from "../../request/trendingMovies/trendingMoviesSlice";
-import { getMovie } from "../../request/movie/apiMovieSlice";
+import React, { useEffect, useState } from 'react';
+import styles from '../../styles/Products.module.css';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getTrendingMovies } from '../../request/trendingMovies/trendingMoviesSlice';
 
 const TrendingMovies = ({ title }) => {
   const dispatch = useDispatch();
@@ -11,10 +10,10 @@ const TrendingMovies = ({ title }) => {
 
   useEffect(() => {
     dispatch(getTrendingMovies())
-      .then((response) => {
+      .then(response => {
         setGenres(response.payload.results);
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   }, [dispatch]);
 
   return (
