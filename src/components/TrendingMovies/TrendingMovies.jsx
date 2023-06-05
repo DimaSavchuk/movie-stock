@@ -29,7 +29,7 @@ const TrendingMovies = ({ title }) => {
             release_date,
             popularity,
           }) => (
-            <Link to={`/movie/${id}`} className={styles.product} key={id}>
+            <Link to={`/movie?id=${id}`} className={styles.product} key={id}>
               <div
                 className={styles.image}
                 style={{

@@ -1,16 +1,20 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
 import categoriesSlice from './categories/categoriesSlice';
 import trendingMoviesSlice from './trendingMovies/trendingMoviesSlice';
-// import { apiMovieSlice } from "./movie/apiMovieSlice";
+import { MovieApi } from './movie/apiMovieSlice';
+
+const reducers = combineReducers({
+  categories: categoriesSlice,
+  trendingMovies: trendingMoviesSlice,
+  [MovieApi.reducerPath]: MovieApi.reducer,
+});
 
 export const store = configureStore({
-  reducer: {
-    categories: categoriesSlice,
-    trendingMovies: trendingMoviesSlice,
-    // [apiMovieSlice.reducerPath]: apiMovieSlice.reducer,
-  },
-  // middleware: (getMiddleware) =>
-  //   getMiddleware().concat(apiMovieSlice.middleware),
+  reducer: reducers,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      thunk: true,
+    }).concat(MovieApi.middleware),
   devTools: true,
 });

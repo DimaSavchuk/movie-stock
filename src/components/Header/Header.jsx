@@ -1,11 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { ROUTER } from "../../utils/routes";
-import LOGO from "../../images/logo.svg";
-import AVATAR from "../../images/user.png";
+import { ROUTER } from '../../utils/routes';
+import LOGO from '../../images/logo.svg';
+import AVATAR from '../../images/user.png';
 
-import styles from "../../styles/Header.module.css";
+import styles from '../../styles/Header.module.css';
 
 const Header = () => {
   return (
@@ -44,15 +44,9 @@ const Header = () => {
         </form>
 
         <div className={styles.account}>
-          <Link to={ROUTER.HOME} className={styles.favourites}>
-            <svg className={styles["icon-fav"]}>
-              <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#heart`} />
-            </svg>
-          </Link>
-
           <Link to={ROUTER.CART} className={styles.cart}>
-            <svg className={styles["icon-cart"]}>
-              <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#bag`} />
+            <svg className={styles['icon-fav']}>
+              <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#heart`} />
             </svg>
 
             <span className={styles.count}>0</span>

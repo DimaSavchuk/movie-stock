@@ -10,6 +10,7 @@
 .info {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .images {
@@ -19,7 +20,7 @@
 
 .current {
   width: 375px;
-  height: 375px;
+  height: 550px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -43,16 +44,56 @@
 }
 
 .title {
-  font-size: 18px;
-  line-height: 22px;
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2em;
 }
 
-.price {
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  margin: 10px 0 20px 0;
+.release {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0 10px 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25em;
+  color: var(--dark-sea);
+}
+
+.release span {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.25em;
+  color: var(--violet);
+}
+
+.overview {
+  margin: 10px 0 10px 0;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--dark-sea);
+}
+
+.tagline {
+  margin: 10px 0 10px 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.25em;
+  color: var(--dark-sea);
+}
+
+.tagline span {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.25em;
+  color: var(--violet);
+}
+
+.overview span {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25em;
+  color: var(--violet);
 }
 
 .color,

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-import styles from "../../styles/Sidebar.module.css";
-import { getCetegories } from "../../request/categories/categoriesSlice";
+import styles from '../../styles/Sidebar.module.css';
+import { getCetegories } from '../../request/categories/categoriesSlice';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -11,10 +11,10 @@ const Sidebar = () => {
 
   useEffect(() => {
     dispatch(getCetegories())
-      .then((response) => {
+      .then(response => {
         setGenres(response.payload.genres);
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   }, [dispatch]);
 
   return (
@@ -25,10 +25,11 @@ const Sidebar = () => {
           {genres.map(({ id, name }) => (
             <li key={id}>
               <NavLink
-                className={({ isActive }) =>
-                  `${styles.link} ${isActive ? styles.active : ""}`
-                }
-                to={`/categories/${id}`}
+                className={styles.link}
+                // className={({ isActive }) =>
+                //   `${styles.link} ${isActive ? styles.active : ''}`
+                // }
+                to={`/search/collection?query=${name}`}
               >
                 {name}
               </NavLink>
@@ -45,7 +46,7 @@ const Sidebar = () => {
           href="/terms"
           target="_blank"
           className={styles.link}
-          style={{ textDecoration: "underline" }}
+          style={{ textDecoration: 'underline' }}
         >
           Terms & Conditions
         </a>
