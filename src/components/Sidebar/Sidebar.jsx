@@ -26,10 +26,10 @@ const Sidebar = () => {
             <li key={id}>
               <NavLink
                 className={styles.link}
-                // className={({ isActive }) =>
-                //   `${styles.link} ${isActive ? styles.active : ''}`
-                // }
-                to={`/search/collection?query=${name}`}
+                to={{
+                  pathname: '/search/collection',
+                  search: `?name=${name}`,
+                }}
               >
                 {name}
               </NavLink>

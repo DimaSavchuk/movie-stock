@@ -29,6 +29,12 @@
   background-size: cover;
 }
 
+.placeholderImage {
+  width: 100%;
+  height: 410px;
+  background-image: url(../images/zatuchka.png);
+}
+
 .wrapper {
   padding: 12px;
   display: flex;
