@@ -10,8 +10,7 @@ export const MovieApi = createApi({
       query: ({ id }) => `/movie/${id}?api_key=${API_KEY}`,
     }),
     getCategoryMovies: builder.query({
-      query: ({ name }) =>
-        `/search/collection?query=${name}&api_key=${API_KEY}`,
+      query: ({ id }) => `/discover/movie?with_genres=${id}&api_key=${API_KEY}`,
     }),
   }),
 });

@@ -8,9 +8,11 @@ import loadingStyles from '../../styles/Loading.module.css';
 const CategoryMovies = () => {
   const [searchQuery] = useSearchParams();
 
-  const name = searchQuery.get('name');
+  const id = searchQuery.get('id');
 
-  const { data, isLoading } = useGetCategoryMoviesQuery({ name });
+  const { data, isLoading } = useGetCategoryMoviesQuery({ id });
+
+  console.log(id, 'id');
 
   return (
     <>
@@ -21,7 +23,7 @@ const CategoryMovies = () => {
         </div>
       ) : (
         <section className={styles.products}>
-          {name && <h2>{name}</h2>}
+          {/* {id && <h2>{id}</h2>} */}
           <div className={styles.list}>
             {data.results.map(
               ({ id, name, original_name, overview, poster_path }) => (

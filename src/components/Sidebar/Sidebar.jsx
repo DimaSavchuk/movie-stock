@@ -24,13 +24,7 @@ const Sidebar = () => {
         <ul className={styles.menu}>
           {genres.map(({ id, name }) => (
             <li key={id}>
-              <NavLink
-                className={styles.link}
-                to={{
-                  pathname: '/search/collection',
-                  search: `?name=${name}`,
-                }}
-              >
+              <NavLink className={styles.link} to={`/discover/movie?id=${id}`}>
                 {name}
               </NavLink>
             </li>

@@ -3,5 +3,5 @@ export const ROUTER = {
   CART: '/cart',
   CATEGORY: '/categories/:id',
   MOVIE: '/movie',
-  CATEGORYMOVIES: '/search/collection',
+  CATEGORYMOVIES: '/discover/movie',
 };
