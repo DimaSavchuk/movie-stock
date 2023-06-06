@@ -2,8 +2,9 @@ import React from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { useGetCategoryMoviesQuery } from 'request/movie/apiMovieSlice';
 
-import styles from '../../styles/Products.module.css';
+import styles from '../../styles/MoviesList.module.css';
 import loadingStyles from '../../styles/Loading.module.css';
+import Hero from 'components/Hero/Hero';
 
 const CategoryMovies = () => {
   const [searchQuery] = useSearchParams();
@@ -12,10 +13,11 @@ const CategoryMovies = () => {
 
   const { data, isLoading } = useGetCategoryMoviesQuery({ id });
 
-  console.log(id, 'id');
+  const { results } = data || {};
 
   return (
     <>
+      <Hero results={results} isLoading={isLoading} />
       {isLoading ? (
         <div className={loadingStyles.loading}>
           <div className={loadingStyles.spinner}></div>
@@ -23,9 +25,8 @@ const CategoryMovies = () => {
         </div>
       ) : (
         <section className={styles.products}>
-          {/* {id && <h2>{id}</h2>} */}
           <div className={styles.list}>
-            {data.results.map(
+            {results.map(
               ({
                 id,
                 title,

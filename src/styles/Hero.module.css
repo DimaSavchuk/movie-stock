@@ -1,6 +1,8 @@
 .home {
   position: relative;
   flex-grow: 1;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .title {
@@ -67,7 +69,7 @@
 
 .left:before,
 .left:after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
 }

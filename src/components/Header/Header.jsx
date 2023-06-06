@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ROUTER } from '../../utils/routes';
@@ -6,8 +6,19 @@ import LOGO from '../../images/logo.svg';
 import AVATAR from '../../images/user.png';
 
 import styles from '../../styles/Header.module.css';
+import { useGetSearchQuery } from 'request/movie/apiMovieSlice';
 
 const Header = () => {
+  const [searchValue, setSarchValue] = useState('');
+
+  const handleSearch = ({ target: { value } }) => {
+    setSarchValue(value);
+  };
+
+  const { data, isLoading } = useGetSearchQuery({ query: searchValue });
+
+  const { results } = data || {};
+
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
@@ -35,12 +46,34 @@ const Header = () => {
               name="search"
               placeholder="Search..."
               autoComplete="off"
-              onChange={() => {}}
-              value=""
+              onChange={handleSearch}
+              value={searchValue}
             />
           </div>
 
-          {false && <div className={styles.box}></div>}
+          {searchValue && (
+            <div className={styles.box}>
+              {isLoading
+                ? 'Loading...'
+                : !results.length
+                ? 'No results'
+                : results.map(({ title, poster_path, id }) => (
+                    <Link
+                      key={id}
+                      to={`/movie?id=${id}`}
+                      className={styles.item}
+                    >
+                      <div
+                        className={styles.image}
+                        style={{
+                          backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})`,
+                        }}
+                      />
+                      <div className={styles.title}>{title}</div>
+                    </Link>
+                  ))}
+            </div>
+          )}
         </form>
 
         <div className={styles.account}>
