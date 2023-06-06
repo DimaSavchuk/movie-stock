@@ -28,8 +28,8 @@ const Sidebar = () => {
             {genres.map(({ id, name }) => (
               <li key={id}>
                 <NavLink
-                  className={styles.link}
                   to={`/discover/movie?id=${id}`}
+                  className={styles.link}
                 >
                   {name}
                 </NavLink>

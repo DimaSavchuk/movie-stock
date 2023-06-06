@@ -1,5 +1,5 @@
 export const ROUTER = {
-  HOME: '/',
+  HOME: '/movie-stock',
   CART: '/cart',
   CATEGORY: '/categories',
   MOVIE: '/movie',

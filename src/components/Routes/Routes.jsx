@@ -10,7 +10,7 @@ import CategoryMovies from 'components/CategoryMovies/CategoryMovies';
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route index element={<Home />} />
+      <Route path={ROUTER.HOME} element={<Home />} />
       <Route path={ROUTER.MOVIE} element={<Movie />} />
       <Route path={ROUTER.CATEGORYMOVIES} element={<CategoryMovies />} />
     </Routes>
