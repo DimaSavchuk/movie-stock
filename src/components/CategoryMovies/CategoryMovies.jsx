@@ -24,7 +24,7 @@ const CategoryMovies = () => {
           <div>Loading...</div>
         </div>
       ) : (
-        <section className={styles.products}>
+        <section className={styles.movies}>
           <div className={styles.list}>
             {results.map(
               ({
@@ -33,36 +33,46 @@ const CategoryMovies = () => {
                 release_date,
                 poster_path,
                 vote_count,
-                popularity,
-              }) => (
-                <Link
-                  to={`/movie?id=${id}`}
-                  className={styles.product}
-                  key={id}
-                >
-                  {poster_path ? (
-                    <div
-                      className={styles.image}
-                      style={{
-                        backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})`,
-                      }}
-                    />
-                  ) : (
-                    <div className={styles.placeholderImage}></div>
-                  )}
+                vote_average,
+              }) => {
+                const formattedRating = vote_average.toFixed(1);
 
-                  <div className={styles.wrapper}>
-                    <h3 className={styles.title}>{title}</h3>
-                    <div className={styles.cat}>Popularity: {popularity}</div>
-                    <div className={styles.info}>
-                      <div className={styles.prices}>{release_date}</div>
-                      <div className={styles.purchases}>
-                        Vote count: {vote_count}
+                return (
+                  <Link
+                    to={`/movie?id=${id}`}
+                    className={styles.movie}
+                    key={id}
+                  >
+                    {poster_path ? (
+                      <div
+                        className={styles.image}
+                        style={{
+                          backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})`,
+                        }}
+                      />
+                    ) : (
+                      <div className={styles.placeholderImage}></div>
+                    )}
+
+                    <div className={styles.wrapper}>
+                      <h3 className={styles.title}>{title}</h3>
+                      <div className={styles.rating}>
+                        <span className={styles.ratingCircle}>
+                          {formattedRating}
+                        </span>
+                      </div>
+                      <div className={styles.info}>
+                        <div className={styles.release_date}>
+                          {release_date}
+                        </div>
+                        <div className={styles.vote_count}>
+                          Vote count: {vote_count}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-              )
+                  </Link>
+                );
+              }
             )}
           </div>
         </section>

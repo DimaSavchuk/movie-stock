@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useGetTrendingMoviesQuery } from 'request/movie/apiMovieSlice';
-
 import styles from '../../styles/MoviesList.module.css';
 import loadingStyles from '../../styles/Loading.module.css';
 
@@ -18,7 +17,7 @@ const TrendingMovies = ({ title }) => {
           <div>Loading...</div>
         </div>
       ) : (
-        <section className={styles.products}>
+        <section className={styles.movies}>
           {title && <h2>{title}</h2>}
           <div className={styles.list}>
             {results.map(
@@ -28,32 +27,43 @@ const TrendingMovies = ({ title }) => {
                 title,
                 vote_count,
                 release_date,
-                popularity,
-              }) => (
-                <Link
-                  to={`/movie?id=${id}`}
-                  className={styles.product}
-                  key={id}
-                >
-                  <div
-                    className={styles.image}
-                    style={{
-                      backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})`,
-                    }}
-                  />
+                vote_average,
+              }) => {
+                const formattedRating = vote_average.toFixed(1);
 
-                  <div className={styles.wrapper}>
-                    <h3 className={styles.title}>{title}</h3>
-                    <div className={styles.cat}>Popularity: {popularity}</div>
-                    <div className={styles.info}>
-                      <div className={styles.prices}>{release_date}</div>
-                      <div className={styles.purchases}>
-                        Vote count: {vote_count}
+                return (
+                  <Link
+                    to={`/movie?id=${id}`}
+                    className={styles.movie}
+                    key={id}
+                  >
+                    <div
+                      className={styles.image}
+                      style={{
+                        backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})`,
+                      }}
+                    />
+
+                    <div className={styles.wrapper}>
+                      <h3 className={styles.title}>{title}</h3>
+                      <div className={styles.rating}>
+                        <span className={styles.ratingCircle}>
+                          {formattedRating}
+                        </span>
+                      </div>
+
+                      <div className={styles.info}>
+                        <div className={styles.release_date}>
+                          {release_date}
+                        </div>
+                        <div className={styles.vote_count}>
+                          Vote count: {vote_count}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-              )
+                  </Link>
+                );
+              }
             )}
           </div>
         </section>
