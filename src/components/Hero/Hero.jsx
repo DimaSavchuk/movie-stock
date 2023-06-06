@@ -14,9 +14,7 @@ const Hero = () => {
           </h1>
           <button className={styles.button}>Watch list</button>
         </div>
-        <div className={styles.image}>
-          {/* <img src={BACKGROUND} alt="back ground" /> */}
-        </div>
+        <div className={styles.image}></div>
       </div>
     </section>
   );

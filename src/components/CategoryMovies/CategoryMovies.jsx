@@ -26,7 +26,14 @@ const CategoryMovies = () => {
           {/* {id && <h2>{id}</h2>} */}
           <div className={styles.list}>
             {data.results.map(
-              ({ id, name, original_name, overview, poster_path }) => (
+              ({
+                id,
+                title,
+                release_date,
+                poster_path,
+                vote_count,
+                popularity,
+              }) => (
                 <Link
                   to={`/movie?id=${id}`}
                   className={styles.product}
@@ -44,7 +51,14 @@ const CategoryMovies = () => {
                   )}
 
                   <div className={styles.wrapper}>
-                    <h3 className={styles.title}>{name}</h3>
+                    <h3 className={styles.title}>{title}</h3>
+                    <div className={styles.cat}>Popularity: {popularity}</div>
+                    <div className={styles.info}>
+                      <div className={styles.prices}>{release_date}</div>
+                      <div className={styles.purchases}>
+                        Vote count: {vote_count}
+                      </div>
+                    </div>
                   </div>
                 </Link>
               )
