@@ -3,10 +3,23 @@ import { Link } from 'react-router-dom';
 
 import { ROUTER } from '../../utils/routes';
 import LOGO from '../../images/logo.svg';
-import AVATAR from '../../images/user.png';
 
-import styles from '../../styles/Header.module.css';
 import { useGetSearchQuery } from 'request/movie/apiMovieSlice';
+
+import {
+  HeaderStyled,
+  Logo,
+  Info,
+  Form,
+  Icon,
+  Svg,
+  FormInput,
+  Input,
+  Box,
+  Item,
+  Image,
+  Title,
+} from './Header.styled';
 
 const Header = () => {
   const [searchValue, setSarchValue] = useState('');
@@ -20,28 +33,21 @@ const Header = () => {
   const { results } = data || {};
 
   return (
-    <div className={styles.header}>
-      <div className={styles.logo}>
+    <HeaderStyled>
+      <Logo>
         <Link to={ROUTER.HOME}>
           <img src={LOGO} alt="logo" />
         </Link>
-      </div>
-      <div className={styles.info}>
-        <div className={styles.user}>
-          <div
-            className={styles.avatar}
-            style={{ backgroundImage: `url(${AVATAR})` }}
-          />
-          <div className={styles.username}>Guest</div>
-        </div>
-        <form className={styles.form}>
-          <div className={styles.icon}>
-            <svg className="icon">
+      </Logo>
+      <Info>
+        <Form>
+          <Icon>
+            <Svg>
               <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#search`} />
-            </svg>
-          </div>
-          <div className={styles.input}>
-            <input
+            </Svg>
+          </Icon>
+          <FormInput>
+            <Input
               type="search"
               name="search"
               placeholder="Search..."
@@ -49,44 +55,29 @@ const Header = () => {
               onChange={handleSearch}
               value={searchValue}
             />
-          </div>
+          </FormInput>
 
           {searchValue && (
-            <div className={styles.box}>
+            <Box>
               {isLoading
                 ? 'Loading...'
                 : !results.length
                 ? 'No results'
                 : results.map(({ title, poster_path, id }) => (
-                    <Link
-                      key={id}
-                      to={`/movie?id=${id}`}
-                      className={styles.item}
-                    >
-                      <div
-                        className={styles.image}
+                    <Item key={id} to={`/movie?id=${id}`}>
+                      <Image
                         style={{
                           backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})`,
                         }}
                       />
-                      <div className={styles.title}>{title}</div>
-                    </Link>
+                      <Title>{title}</Title>
+                    </Item>
                   ))}
-            </div>
+            </Box>
           )}
-        </form>
-
-        <div className={styles.account}>
-          <Link to={ROUTER.CART} className={styles.cart}>
-            <svg className={styles['icon-fav']}>
-              <use xlinkHref={`${process.env.PUBLIC_URL}/sprite.svg#heart`} />
-            </svg>
-
-            <span className={styles.count}>0</span>
-          </Link>
-        </div>
-      </div>
-    </div>
+        </Form>
+      </Info>
+    </HeaderStyled>
   );
 };
 

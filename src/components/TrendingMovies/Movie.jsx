@@ -1,9 +1,24 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
+
 import { useGetMovieQuery } from 'request/movie/apiMovieSlice';
 
-import styles from '../../styles/Movie.module.css';
-import loadingStyles from '../../styles/Loading.module.css';
+import Loading from 'components/Loading/Loading';
+
+import {
+  MovieStyled,
+  Info,
+  Images,
+  Current,
+  Title,
+  Original,
+  Release,
+  Overview,
+  Tagline,
+  Actions,
+  SeeMore,
+  ToWatchList,
+} from './Movie.styled';
 
 const Movie = () => {
   const [searchQuery] = useSearchParams();
@@ -18,32 +33,31 @@ const Movie = () => {
     tagline,
     overview,
     homepage,
+    original_title,
   } = data ?? {};
 
   const handleClick = () => {
     window.location.href = homepage;
   };
+
   return (
     <>
       {isLoading ? (
-        <div className={loadingStyles.loading}>
-          <div className={loadingStyles.spinner}></div>
-          <div>Loading...</div>
-        </div>
+        <Loading />
       ) : (
-        <section className={styles.product}>
-          <div className={styles.images}>
-            <div
-              className={styles.current}
+        <MovieStyled>
+          <Images>
+            <Current
               style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})`,
               }}
             />
-          </div>
-          <div className={styles.info}>
+          </Images>
+          <Info>
             <div>
-              <h1 className={styles.title}>{title}</h1>
-              <div className={styles.release}>
+              <Title>{title}</Title>
+              <Original>{original_title}</Original>
+              <Release>
                 <div>
                   <span>Status: </span>
                   {status}
@@ -52,27 +66,25 @@ const Movie = () => {
                   <span>Release date: </span>
                   {release_date}
                 </div>
-              </div>
+              </Release>
 
-              <div className={styles.tagline}>
+              <Tagline>
                 <span>Tagline: </span>
                 {tagline}
-              </div>
+              </Tagline>
 
-              <div className={styles.overview}>
+              <Overview>
                 <span>Overview: </span>
                 {overview}
-              </div>
+              </Overview>
             </div>
 
-            <div className={styles.actions}>
-              <button className={styles.add} onClick={handleClick}>
-                See more
-              </button>
-              <button className={styles.favourite}>Add to watch list</button>
-            </div>
-          </div>
-        </section>
+            <Actions>
+              <SeeMore onClick={handleClick}>See more</SeeMore>
+              <ToWatchList disabled={true}>Add to watch list</ToWatchList>
+            </Actions>
+          </Info>
+        </MovieStyled>
       )}
     </>
   );

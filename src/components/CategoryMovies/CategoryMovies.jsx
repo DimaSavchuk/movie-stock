@@ -1,10 +1,23 @@
 import React from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useGetCategoryMoviesQuery } from 'request/movie/apiMovieSlice';
 
-import styles from '../../styles/MoviesList.module.css';
-import loadingStyles from '../../styles/Loading.module.css';
 import Hero from 'components/Hero/Hero';
+import Loading from 'components/Loading/Loading';
+
+import {
+  Movies,
+  List,
+  Movie,
+  Image,
+  Wrapper,
+  Title,
+  Rating,
+  RatingCircle,
+  Info,
+  ReleaseDate,
+  VoteCount,
+} from '../../styles/MoviesList.styled';
 
 const CategoryMovies = () => {
   const [searchQuery] = useSearchParams();
@@ -19,13 +32,10 @@ const CategoryMovies = () => {
     <>
       <Hero results={results} isLoading={isLoading} />
       {isLoading ? (
-        <div className={loadingStyles.loading}>
-          <div className={loadingStyles.spinner}></div>
-          <div>Loading...</div>
-        </div>
+        <Loading />
       ) : (
-        <section className={styles.movies}>
-          <div className={styles.list}>
+        <Movies>
+          <List>
             {results.map(
               ({
                 id,
@@ -38,44 +48,33 @@ const CategoryMovies = () => {
                 const formattedRating = vote_average.toFixed(1);
 
                 return (
-                  <Link
-                    to={`/movie?id=${id}`}
-                    className={styles.movie}
-                    key={id}
-                  >
+                  <Movie to={`/movie?id=${id}`} key={id}>
                     {poster_path ? (
-                      <div
-                        className={styles.image}
+                      <Image
                         style={{
                           backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})`,
                         }}
                       />
                     ) : (
-                      <div className={styles.placeholderImage}></div>
+                      <div></div>
                     )}
 
-                    <div className={styles.wrapper}>
-                      <h3 className={styles.title}>{title}</h3>
-                      <div className={styles.rating}>
-                        <span className={styles.ratingCircle}>
-                          {formattedRating}
-                        </span>
-                      </div>
-                      <div className={styles.info}>
-                        <div className={styles.release_date}>
-                          {release_date}
-                        </div>
-                        <div className={styles.vote_count}>
-                          Vote count: {vote_count}
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
+                    <Wrapper>
+                      <Title>{title}</Title>
+                      <Rating>
+                        <RatingCircle>{formattedRating}</RatingCircle>
+                      </Rating>
+                      <Info>
+                        <ReleaseDate>{release_date}</ReleaseDate>
+                        <VoteCount>Vote count: {vote_count}</VoteCount>
+                      </Info>
+                    </Wrapper>
+                  </Movie>
                 );
               }
             )}
-          </div>
-        </section>
+          </List>
+        </Movies>
       )}
     </>
   );

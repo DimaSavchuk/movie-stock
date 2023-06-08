@@ -1,57 +1,54 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-
-import styles from '../../styles/Sidebar.module.css';
 
 import { useGetCategoryQuery } from 'request/movie/apiMovieSlice';
-import loadingStyles from '../../styles/Loading.module.css';
+
+import Loading from 'components/Loading/Loading';
+
+import {
+  SidebarStyled,
+  Title,
+  Navigation,
+  Menu,
+  NavLinks,
+  SidebarFooter,
+  Links,
+} from './Sidebar.styled';
 
 const Sidebar = () => {
   const { data, isLoading } = useGetCategoryQuery();
 
   const isLoadingData = () => {
     if (isLoading) {
-      return (
-        <div className={loadingStyles.loading}>
-          <div className={loadingStyles.spinner}></div>
-          <div>Loading...</div>
-        </div>
-      );
+      return <Loading />;
     }
 
     const { genres } = data;
     return (
-      <section className={styles.sidebar}>
-        <div className={styles.title}>CATEGORIES</div>
-        <nav>
-          <ul className={styles.menu}>
+      <SidebarStyled>
+        <Title>CATEGORIES</Title>
+        <Navigation>
+          <Menu>
             {genres.map(({ id, name }) => (
               <li key={id}>
-                <NavLink
-                  to={`/discover/movie?id=${id}`}
-                  className={styles.link}
-                >
-                  {name}
-                </NavLink>
+                <NavLinks to={`/discover/movie?id=${id}`}>{name}</NavLinks>
               </li>
             ))}
-          </ul>
-        </nav>
+          </Menu>
+        </Navigation>
 
-        <div className={styles.footer}>
-          <a href="/help" target="_blank" className={styles.link}>
+        <SidebarFooter>
+          <Links href="/help" target="_blank">
             Help
-          </a>
-          <a
+          </Links>
+          <Links
             href="/terms"
             target="_blank"
-            className={styles.link}
             style={{ textDecoration: 'underline' }}
           >
             Terms & Conditions
-          </a>
-        </div>
-      </section>
+          </Links>
+        </SidebarFooter>
+      </SidebarStyled>
     );
   };
 
