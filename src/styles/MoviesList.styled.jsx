@@ -20,7 +20,7 @@ export const Movie = styled(Link)`
   width: calc(100% / 5 - 20px);
   position: relative;
 
-  :nth-child(5n) {
+  :nth-of-type(5n) {
     width: calc(100% / 5);
   }
 

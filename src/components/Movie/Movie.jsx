@@ -1,9 +1,10 @@
 import React from 'react';
-import { useSearchParams } from 'react-router-dom';
 
+import { useSearchParams } from 'react-router-dom';
 import { useGetMovieQuery } from 'request/movie/apiMovieSlice';
 
 import Loading from 'components/Loading/Loading';
+import VideoFrame from './Additional/VideoFrame';
 
 import {
   MovieStyled,
@@ -77,6 +78,8 @@ const Movie = () => {
                 <span>Overview: </span>
                 {overview}
               </Overview>
+
+              <VideoFrame id={id} />
             </div>
 
             <Actions>

@@ -23,6 +23,9 @@ export const MovieApi = createApi({
       query: params =>
         buildUrl(`search/movie?api_key=${API_KEY}&language=en-US`, params),
     }),
+    getVideo: builder.query({
+      query: ({ id }) => `/movie/${id}/videos?api_key=${API_KEY}`,
+    }),
   }),
 });
 
@@ -32,4 +35,5 @@ export const {
   useGetMovieQuery,
   useGetCategoryMoviesQuery,
   useGetSearchQuery,
+  useGetVideoQuery,
 } = MovieApi;

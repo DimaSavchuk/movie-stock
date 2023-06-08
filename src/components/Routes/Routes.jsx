@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ROUTER } from '../../utils/routes';
 
 import Home from '../Home/Home';
-import Movie from '../TrendingMovies/Movie';
+import Movie from '../Movie/Movie';
 import CategoryMovies from 'components/CategoryMovies/CategoryMovies';
 
 const AppRoutes = () => {
