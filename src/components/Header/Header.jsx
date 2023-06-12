@@ -32,6 +32,10 @@ const Header = () => {
 
   const { results } = data || {};
 
+  const closeBox = () => {
+    searchValue = '';
+  };
+
   return (
     <HeaderStyled>
       <Logo>
@@ -64,7 +68,7 @@ const Header = () => {
                 : !results.length
                 ? 'No results'
                 : results.map(({ title, poster_path, id }) => (
-                    <Item key={id} to={`/movie?id=${id}`}>
+                    <Item key={id} to={`/movie?id=${id}`} onClick={closeBox}>
                       <Image
                         style={{
                           backgroundImage: `url(https://image.tmdb.org/t/p/original/${poster_path})`,

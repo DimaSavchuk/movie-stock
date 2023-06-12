@@ -94,6 +94,8 @@ export const Actions = styled.div`
   margin-top: 20px;
   display: flex;
   column-gap: 10px;
+
+  justify-content: space-between;
 `;
 
 export const SeeMore = styled.button`

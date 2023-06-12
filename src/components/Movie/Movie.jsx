@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useGetMovieQuery } from 'request/movie/apiMovieSlice';
 
 import Loading from 'components/Loading/Loading';
@@ -20,6 +20,7 @@ import {
   SeeMore,
   ToWatchList,
 } from './Movie.styled';
+import { ROUTER } from 'utils/routes';
 
 const Movie = () => {
   const [searchQuery] = useSearchParams();
@@ -84,7 +85,9 @@ const Movie = () => {
 
             <Actions>
               <SeeMore onClick={handleClick}>See more</SeeMore>
-              <ToWatchList disabled={true}>Add to watch list</ToWatchList>
+              <Link to={ROUTER.HOME}>
+                <ToWatchList>Back to home</ToWatchList>
+              </Link>
             </Actions>
           </Info>
         </MovieStyled>

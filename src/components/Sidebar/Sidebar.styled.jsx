@@ -49,10 +49,6 @@ export const NavLinks = styled(NavLink)`
   :hover {
     color: var(--white);
   }
-
-  .active {
-    color: var(--violet);
-  }
 `;
 
 export const SidebarFooter = styled.div`

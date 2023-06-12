@@ -9,7 +9,6 @@ import {
   Text,
   Subtitle,
   Slogan,
-  Button,
 } from './Hero.styled';
 
 const Hero = ({ results, isLoading }) => {
@@ -31,7 +30,6 @@ const Hero = ({ results, isLoading }) => {
               <Slogan>
                 Discover, Explore, and Experience the Magic of Movies
               </Slogan>
-              <Button>Watch list</Button>
             </Text>
           </About>
         </HeroStyled>

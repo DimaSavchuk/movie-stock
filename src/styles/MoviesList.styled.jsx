@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export const Movies = styled.section`
   width: 100%;
   padding: 25px 22px;
+  min-height: 500px;
 `;
 
 export const List = styled.div`

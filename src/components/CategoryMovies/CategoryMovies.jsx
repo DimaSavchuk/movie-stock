@@ -31,10 +31,11 @@ const CategoryMovies = () => {
   return (
     <>
       <Hero results={results} isLoading={isLoading} />
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <Movies>
+
+      <Movies>
+        {isLoading ? (
+          <Loading />
+        ) : (
           <List>
             {results.map(
               ({
@@ -74,8 +75,8 @@ const CategoryMovies = () => {
               }
             )}
           </List>
-        </Movies>
-      )}
+        )}
+      </Movies>
     </>
   );
 };
