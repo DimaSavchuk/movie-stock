@@ -33,7 +33,7 @@ const Header = () => {
   const { results } = data || {};
 
   const closeBox = () => {
-    searchValue = '';
+    setSarchValue('');
   };
 
   return (
